@@ -5,7 +5,7 @@
 [![Architecture](https://img.shields.io/badge/Architecture-Modular_ESM-brightgreen?style=for-the-badge)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules)
 
 A highly polished, enterprise-ready, cyber-aesthetic hardware e-commerce and real-time telemetry management platform built for **Extreme-Level Workstation Specialists**. **NO_LAG** delivers an immersive high-fidelity user interface coupled with a fully-functional administrative console that manages inventory using local state synchronization (Full CRUD), and a live hardware stress-testing simulator.
-
+🔗 **[⚡️ LAUNCH LIVE NO_LAG ENVIRONMENT](https://jovial-axolotl-9fd109.netlify.app/)**
 ---
 
 ## 🚀 Key Evolutionary Features
