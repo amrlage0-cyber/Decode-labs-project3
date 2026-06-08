@@ -1,0 +1,271 @@
+/* ==========================================================================
+   NO LAG — ELITE PC HARDWARE HUB
+   LOGIN STYLESHEET (login.css)
+   ========================================================================== */
+
+.login-viewport {
+  min-h-screen: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background-color: var(--tech-black);
+  position: relative;
+  z-index: 10;
+}
+
+.login-card-wrapper {
+  width: 100%;
+  max-width: 460px;
+}
+
+.login-brand-logo {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.login-brand-logo h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.75rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  color: var(--silver-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.login-brand-logo h1 .indicator {
+  width: 16px;
+  height: 16px;
+  background-color: var(--cyber-purple);
+  box-shadow: 0 0 12px var(--cyber-purple);
+  display: inline-block;
+}
+
+.login-subtitle {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--silver-gray);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-top: 0.25rem;
+}
+
+/* Auth Frame Panel */
+.auth-panel {
+  background-color: var(--deep-charcoal);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2.25rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.auth-panel:hover {
+  border-color: rgba(118, 74, 241, 0.4);
+  box-shadow: 0 0 35px rgba(118, 74, 241, 0.1);
+}
+
+.auth-stripe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--cyber-purple), transparent);
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--silver-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-left: 2px;
+}
+
+.input-container {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--silver-gray);
+  opacity: 0.5;
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  background-color: var(--cyber-input);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 12px 14px 12px 42px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--silver-white);
+  height: 48px;
+  transition: all 0.2s ease;
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--cyber-purple);
+  box-shadow: 0 0 12px rgba(118, 74, 241, 0.22);
+  background-color: rgba(30, 30, 38, 0.7);
+}
+
+.input-field::placeholder {
+  color: rgba(255, 255, 255, 0.15);
+}
+
+.input-helper {
+  font-size: 0.68rem;
+  color: var(--cyber-purple);
+  margin-top: 0.5rem;
+  line-height: 1.4;
+}
+
+.input-helper b {
+  color: var(--silver-white);
+  text-decoration: underline;
+}
+
+.login-options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1.75rem 0;
+  font-size: 0.68rem;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--silver-gray);
+  cursor: pointer;
+  user-select: none;
+}
+
+.remember-me input {
+  accent-color: var(--cyber-purple);
+  width: 14px;
+  height: 14px;
+}
+
+.remember-me:hover {
+  color: var(--silver-white);
+}
+
+.node-status {
+  font-weight: 700;
+  color: var(--cyber-purple);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.btn-submit {
+  width: 100%;
+  background-color: var(--cyber-green);
+  color: var(--tech-black);
+  height: 52px;
+  border: none;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #02c365;
+  box-shadow: 0 0 15px var(--cyber-green-glow);
+}
+
+/* Authentication panel footer */
+.auth-footer {
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.6rem;
+  color: rgba(160, 165, 175, 0.35);
+}
+
+.auth-footer-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.auth-footer-ping {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.pulse-dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--cyber-green);
+  border-radius: 50% !important;
+  display: inline-block;
+  animation: pingDot 1.5s infinite ease-in-out;
+}
+
+@keyframes pingDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.8); opacity: 0.4; }
+}
+
+/* Bypass guest paths */
+.guest-access-panel {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  padding: 0 0.25rem;
+}
+
+.guest-btn {
+  background: none;
+  border: none;
+  color: var(--silver-gray);
+  font-family: inherit;
+  font-size: 0.7rem;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.guest-btn:hover {
+  color: var(--cyber-purple);
+  padding-left: 2px;
+}
+
+.guest-btn-right {
+  text-align: right;
+}
+.guest-btn-right:hover {
+  padding-left: 0;
+  padding-right: 2px;
+}

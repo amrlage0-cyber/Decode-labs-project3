@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Lag — Console Terminal</title>
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/animation.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="shimmer-shun page-enter">
+
+  <!-- Ambient Grid Background -->
+  <div class="ambient-grid"></div>
+
+  <!-- ----- NAVIGATION BAR ----- -->
+  <header class="global-header admin-header-border">
+    <button onclick="goToBrandHome()" class="header-brand">
+      <div class="brand-led brand-led-admin"></div>
+      <span class="brand-text">NO_LAG // ADMIN</span>
+    </button>
+    
+    <nav class="global-nav" id="global-nav-bar">
+      <a href="products.html" class="nav-link">Products</a>
+      <a href="user-dashboard.html" class="nav-link">Dashboard</a>
+      <a href="cart.html" class="nav-link">Cart</a>
+      <a href="blogs.html" class="nav-link">Blogs</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    
+    <div class="header-actions">
+      <div class="pilot-badge pilot-badge-admin">
+        <span class="pilot-led" id="pilot-role-led"></span>
+        <span>PILOT: <b class="pilot-name" id="pilot-name-display">Guest</b></span>
+      </div>
+
+      <a href="admin.html" id="admin-bypass-btn" class="btn-admin-console d-flex">
+        <i data-lucide="sliders" class="icon-size-14"></i>
+        <span>Admin Console</span>
+      </a>
+
+      <a href="user-dashboard.html" class="cart-trigger text-decoration-none" title="Telemetry Base">
+        <i data-lucide="cpu" class="icon-size-16"></i>
+      </a>
+
+      <!-- Connection logout terminal -->
+      <button onclick="logoutPilot()" class="btn-logout" title="Terminate Session Link">
+        <i data-lucide="log-out" class="icon-size-16"></i>
+      </button>
+
+      <button onclick="toggleMobileMenu()" class="menu-mobile-btn">
+        <i data-lucide="menu" class="icon-size-16"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ----- MAIN ADMIN FORGE ----- -->
+  <main class="container view-section">
+    <!-- Elevated Override Banner -->
+    <div class="admin-welcome-alert">
+      <div>
+        <h2 class="admin-alert-title">
+          <i data-lucide="sliders" class="icon-size-22"></i>
+          ADMIN ROOT PRIVILEGED OVERWRITE
+        </h2>
+        <p class="admin-alert-desc">
+          Root security verified. Active hardware component insertion, SKU liquidation, and intercepted enquiries feeds metrics fully unlocked.
+        </p>
+      </div>
+      <div class="admin-level-badge">Level 0 Override</div>
+    </div>
+
+    <!-- Dual column layouts -->
+    <div class="admin-content-layout">
+      
+      <!-- Left Column: Deploy Asset SKU Form -->
+      <div class="admin-card">
+        <div class="admin-card-header">
+          <span class="admin-card-title">
+            <i data-lucide="folder-plus" class="icon-cyber-yellow icon-size-14"></i>
+            Deploy Hardware Asset SKU
+          </span>
+        </div>
+
+        <!-- Success Alert Status container -->
+        <div id="admin-form-status" class="admin-status-box"></div>
+
+        <form id="admin-add-product-form" onsubmit="handleAdminAddProduct(event)" class="admin-form">
+          <!-- Item Name -->
+          <div class="form-group m-0">
+            <span class="form-label admin-field-label">Architecture Name</span>
+            <input 
+              type="text" 
+              id="admin-prod-name" 
+              class="input-field admin-input-large" 
+              placeholder="e.g. ULTRA-DRIVE RAM DDR5" 
+              required
+            >
+          </div>
+
+          <!-- Class and MSRP Pricing -->
+          <div class="admin-form-row-2">
+            <div class="form-group m-0">
+              <span class="form-label admin-field-label">Category Class</span>
+              <select id="admin-prod-category" class="admin-form-select">
+                <option value="GPU">GPU</option>
+                <option value="CPU">CPU</option>
+                <option value="RAM">Memory (RAM)</option>
+                <option value="Storage">Storage (ROM)</option>
+                <option value="PC">Complete System PC</option>
+              </select>
+            </div>
+            
+            <div class="form-group m-0">
+              <span class="form-label admin-field-label">MSRP Price ($ USD)</span>
+              <input 
+                type="number" 
+                id="admin-prod-price" 
+                class="input-field admin-input-large" 
+                placeholder="e.g. 599.00" 
+                step="0.01" 
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Specs Image Link -->
+          <div class="form-group m-0">
+            <span class="form-label admin-field-label">Silicon Image Graphic Link</span>
+            <input 
+              type="url" 
+              id="admin-prod-image" 
+              class="input-field admin-input-large" 
+              placeholder="https://example.com/item.png" 
+            >
+            <p class="admin-form-tip-text">
+              💡 Leave blank to auto-inject the correct category hardware fallback graphic.
+            </p>
+          </div>
+
+          <!-- Multi-spec evaluations gauges -->
+          <div class="form-group m-0">
+            <span class="form-label admin-field-label">Technical specification Ratings (1-6)</span>
+            
+            <!-- Spec 1 Line -->
+            <div class="admin-form-row-2 gap-8">
+              <input type="text" id="admin-spec1-name" class="input-field admin-input-medium" value="Clock Power Rating">
+              <select id="admin-spec1-val" class="admin-form-select admin-select-medium">
+                <option value="1">1 / 6 Limit</option>
+                <option value="2">2 / 6 Limit</option>
+                <option value="3">3 / 6 Limit</option>
+                <option value="4">4 / 6 Limit</option>
+                <option value="5" selected>5 / 6 Limit</option>
+                <option value="6">6 / 6 Limit (Max Apex)</option>
+              </select>
+            </div>
+            
+            <!-- Spec 2 Line -->
+            <div class="admin-form-row-2 admin-form-row-gap">
+              <input type="text" id="admin-spec2-name" class="input-field admin-input-medium" value="Thermal Efficiency">
+              <select id="admin-spec2-val" class="admin-form-select admin-select-medium">
+                <option value="1">1 / 6 Limit</option>
+                <option value="2">2 / 6 Limit</option>
+                <option value="3">3 / 6 Limit</option>
+                <option value="4" selected>4 / 6 Limit</option>
+                <option value="5">5 / 6 Limit</option>
+                <option value="6">6 / 6 Limit (Max Apex)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Description text -->
+          <div class="form-group m-0">
+            <span class="form-label admin-field-label">Specifications Summary</span>
+            <textarea id="admin-prod-desc" class="admin-form-textarea" rows="2" placeholder="Sub-timings calibrations under extreme synthetic load..."></textarea>
+          </div>
+
+          <button type="submit" class="btn-admin-submit">
+            Assemble SKU Record
+          </button>
+        </form>
+      </div>
+
+      <!-- Right Column: Inventory database table & communications intercept panel -->
+      <div class="space-y-8 admin-right-column-space">
+        
+        <!-- SKU inventory metrics table dashboard -->
+        <div class="admin-card p-0">
+          <div class="admin-card-header admin-card-header-seamless">
+            <span class="admin-card-title">
+              <i data-lucide="database" class="icon-cyber-yellow icon-size-14"></i>
+              Active Inventory ledger
+            </span>
+            <span class="admin-badge-count" id="admin-sku-total">0 SKUs</span>
+          </div>
+          
+          <div class="admin-inventory-list-wrapper">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th class="text-left">Record ID</th>
+                  <th class="text-left">Architecture SKU Title</th>
+                  <th class="text-left">Class</th>
+                  <th class="text-left">Price</th>
+                  <th class="text-right">Operations</th>
+                </tr>
+              </thead>
+              <tbody id="admin-inventory-table">
+                <!-- Loaded dynamically via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- ADMIN ORDERS CRUD COMMAND CORE -->
+        <div class="admin-card p-1-5">
+          <div class="admin-card-header admin-order-header">
+            <span class="admin-card-title">
+              <i data-lucide="package" class="icon-cyber-yellow icon-size-14"></i>
+              Active Command Order Dispatch Core (Full CRUD)
+            </span>
+            <span class="admin-badge-count admin-orders-badge-count-override" id="admin-orders-total">0 Orders</span>
+          </div>
+
+          <!-- Quick ADD Order Form for Admin -->
+          <form id="admin-add-order-form" onsubmit="event.preventDefault(); handleAdminAddOrder();" class="admin-quick-add-form">
+            <div class="grid-span-2">
+              <span class="admin-form-sub-label">Core Contents:</span>
+              <input type="text" id="admin-order-items" class="input-field admin-input-small" placeholder="e.g. ULTRA GPU RTX 4090" required>
+            </div>
+            <div>
+              <span class="admin-form-sub-label">MSRP Toll ($):</span>
+              <input type="number" id="admin-order-price" class="input-field admin-input-small" placeholder="499.00" value="450.00" step="0.01" required>
+            </div>
+            <div>
+              <span class="admin-form-sub-label">Pipeline Status:</span>
+              <select id="admin-order-status" class="admin-form-select admin-select-small">
+                <option value="Completed">Acknowledged</option>
+                <option value="Pending">Pending Link</option>
+                <option value="Shipping">Out for Route</option>
+              </select>
+            </div>
+            <button type="submit" class="btn-admin-submit admin-add-order-btn">
+              Generate Administrative Dispatch Order
+            </button>
+          </form>
+
+          <!-- Administrative Orders List -->
+          <div class="admin-inventory-list-wrapper admin-inventory-table-scroller">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th class="text-left admin-field-label">ID</th>
+                  <th class="text-left admin-field-label">Silicon Contents</th>
+                  <th class="text-left admin-field-label">Status</th>
+                  <th class="text-left admin-field-label">Price</th>
+                  <th class="text-right admin-field-label">Operations</th>
+                </tr>
+              </thead>
+              <tbody id="admin-orders-table">
+                <!-- Loaded dynamically via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Uplink intercepted Visitor signal feed panel -->
+        <div class="admin-card p-0">
+          <div class="admin-card-header admin-messages-header">
+            <span class="admin-card-title">
+              <i data-lucide="radio" class="icon-cyber-yellow icon-size-14"></i>
+              Intercepted communication signals feed
+            </span>
+            <button onclick="clearAllMessages()" class="btn-admin-delete admin-btn-refresh-cache">Refresh Cache</button>
+          </div>
+          
+          <div class="admin-inventory-list-wrapper admin-messages-feed-box">
+            <div class="messages-intercept-panel" id="admin-messages-list">
+              <!-- Loaded dynamically via admin.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ----- FOOTER ----- -->
+  <footer class="global-footer">
+    <p>© 2026 NO_LAG HARDWARE LABORATORIES INC. ALL RIGHTS RESERVED. EXTREME LEVEL WORKSTATION SPECIALISTS.</p>
+  </footer>
+
+  <script type="module" src="/assets/js/script.js"></script>
+  <script type="module" src="/assets/js/admin.js"></script>
+</body>
+</html>

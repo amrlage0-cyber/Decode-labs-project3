@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Lag — Telemetry Command</title>
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/animation.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="shimmer-shun page-enter">
+
+  <!-- Ambient Grid Background -->
+  <div class="ambient-grid"></div>
+
+  <!-- ----- NAVIGATION BAR ----- -->
+  <header class="global-header">
+    <button onclick="goToBrandHome()" class="header-brand">
+      <div class="brand-led"></div>
+      <span class="brand-text">NO_LAG</span>
+    </button>
+    
+    <nav class="global-nav" id="global-nav-bar">
+      <a href="products.html" class="nav-link">Products</a>
+      <a href="user-dashboard.html" class="nav-link active">Dashboard</a>
+      <a href="cart.html" class="nav-link">Cart</a>
+      <a href="blogs.html" class="nav-link">Blogs</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    
+    <div class="header-actions">
+      <div class="pilot-badge">
+        <span class="pilot-led" id="pilot-role-led"></span>
+        <span>PILOT: <b class="pilot-name" id="pilot-name-display">Guest</b></span>
+      </div>
+
+      <a href="admin.html" id="admin-bypass-btn" class="btn-admin-console d-none">
+        <i data-lucide="sliders" class="icon-size-14"></i>
+        <span>Admin Console</span>
+      </a>
+
+      <a href="user-dashboard.html" class="cart-trigger active text-decoration-none" title="Telemetry Base">
+        <i data-lucide="cpu" class="icon-size-16"></i>
+      </a>
+
+      <button onclick="toggleCartDrawer(true)" class="cart-trigger" title="Shopping Cart">
+        <i data-lucide="shopping-cart" class="icon-size-16"></i>
+        <span class="cart-badge d-none" id="header-cart-count">0</span>
+      </button>
+
+      <button onclick="logoutPilot()" class="btn-logout" title="Terminate Session Link">
+        <i data-lucide="log-out" class="icon-size-16"></i>
+      </button>
+
+      <button onclick="toggleMobileMenu()" class="menu-mobile-btn">
+        <i data-lucide="menu" class="icon-size-16"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ----- MAIN TELEMETRY HUD ----- -->
+  <main class="container view-section">
+    <div class="section-ribbon">
+      <div>
+        <span class="ribbon-title-prefix">Real-Time Core Diagnostics</span>
+        <h1 class="ribbon-title-main">Pilot Telemetry Base</h1>
+        <p class="ribbon-title-desc">
+          Continuously monitor client processors, fluid cooling core levels, and examine historic component acquisitions processed within secure storage caches.
+        </p>
+      </div>
+    </div>
+
+    <!-- Real-Time HUD metrics Ribbon -->
+    <div class="bento-metrics-grid">
+      <div class="bento-card bento-metric-green">
+        <div class="bento-metric-round-icon-green">
+          <i data-lucide="activity" class="icon-cyber-green icon-size-18"></i>
+        </div>
+        <div>
+          <span class="dispatch-field-label">PROCESSED CORES</span>
+          <span class="hud-metric-value-white">24 ACTIVE SYSTEMS</span>
+        </div>
+      </div>
+      
+      <div class="bento-card bento-metric-purple">
+        <div class="bento-metric-round-icon-purple">
+          <i data-lucide="terminal" class="icon-cyber-purple icon-size-18"></i>
+        </div>
+        <div>
+          <span class="dispatch-field-label">ACTIVE DISPATCH LINKS</span>
+          <span id="stats-dispatch-count" class="hud-metric-value-white">Loading...</span>
+        </div>
+      </div>
+
+      <div class="bento-card bento-metric-yellow">
+        <div class="bento-metric-round-icon-yellow">
+          <i data-lucide="shield-check" class="icon-cyber-yellow icon-size-18"></i>
+        </div>
+        <div>
+          <span class="dispatch-field-label">LOGISTICS LINK QUALITY</span>
+          <span class="hud-metric-value-white">99.98% SECURE</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Hardware Source Selector Panel -->
+    <div class="bento-card bento-card-uplink">
+      <div class="uplink-node-header">
+        <div class="flex-grow-1">
+          <span class="ribbon-title-prefix title-cyber-green">UPLINK NODE CONTROLLER</span>
+          <h3 class="bento-card-title bento-card-title-m0-s13">Select Target Telemetry Core Source</h3>
+          <p class="font-size-68">
+            Select standard simulation configurations or dynamically stream live sensor telemetries directly from your purchased extreme computing components.
+          </p>
+        </div>
+        <div class="uplink-node-wrapper-width">
+          <label class="matrix-sub-label font-size-58-bold-m2">ACTIVE TELEMETRY PIPELINE SOURCE:</label>
+          <select id="hardware-core-selector" onchange="switchTelemetrySource()" class="search-select-element dispatch-select-override">
+            <option value="virtual-cpu">VIRTUAL SIMULATOR (i9-14900KS CPU Core)</option>
+            <option value="virtual-gpu">VIRTUAL SIMULATOR (RTX 4090 SUPER GPU Accelerator)</option>
+            <!-- User acquired items will populate here dynamically -->
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Telemetry Bento Grid layout -->
+    <div class="telemetry-bento-grid">
+      
+      <!-- Interactive Tuning Panel (Overclock & Core Monitors) -->
+      <div class="bento-card bento-cpu-unit">
+        <div class="bento-card-header">
+          <div>
+            <span class="bento-card-title-prefix" id="active-core-type-prefix">ACTIVE SEMICONDUCTOR PIPELINE</span>
+            <h3 class="bento-card-title" id="active-core-name-display">Intel Core i9-14900KS</h3>
+          </div>
+          <div class="bento-header-badge active bento-header-badge-align">
+            NODE LOAD: <span id="telemetry-load-val" class="text-cyber-green">0%</span>
+          </div>
+        </div>
+
+        <!-- Warning Overheat Alarm Banner -->
+        <div id="overheat-alarm-banner" class="overheat-alarm-active d-none">
+          ⚠️ [THERMAL EMERGENCY] Core temp exceeding critical thresholds. Coolant expansion module engagement recommended!
+        </div>
+
+        <!-- 24-threads micro bar chart meter -->
+        <div class="cpu-matrix-meter">
+          <div class="matrix-bar-pool" id="telemetry-bar-pool">
+            <!-- Simulated thread bars are generated dynamically inside user-dashbord.js -->
+          </div>
+        </div>
+
+        <!-- Dynamic specs indicators -->
+        <div class="matrix-secondary-indicators">
+          <div class="matrix-sub-badge">
+            <span class="matrix-sub-label" id="spec-label-freq">Clock Frequency</span>
+            <span id="telemetry-freq-val" class="matrix-sub-val spec-color-white">6.20 GHz</span>
+          </div>
+          <div class="matrix-sub-badge">
+            <span class="matrix-sub-label">Thermal Level</span>
+            <span id="telemetry-temp-val" class="matrix-sub-val">55°C</span>
+          </div>
+          <div class="matrix-sub-badge">
+            <span class="matrix-sub-label" id="spec-label-volt">Voltage Phase</span>
+            <span id="telemetry-volt-val" class="matrix-sub-val text-cyber-green">1.352 V</span>
+          </div>
+          <div class="matrix-sub-badge">
+            <span class="matrix-sub-label" id="spec-label-watt">Power Draw</span>
+            <span id="telemetry-watt-val" class="matrix-sub-val text-cyber-purple">150.4 W</span>
+          </div>
+        </div>
+
+        <!-- Real-Time Interactive Tweaker Sliders -->
+        <div class="performance-overrides-section">
+          <h4 class="performance-overrides-title">Manual Core Performance Overrides</h4>
+          
+          <div class="performance-overrides-grid">
+            <div>
+              <div class="tuner-sub-row">
+                <span>STABILITY TUNER (OVERCLOCK):</span>
+                <span id="overclock-multiplier-val" class="text-cyber-purple font-bold">+0% (SAFE MODE)</span>
+              </div>
+              <input type="range" id="overclock-range" min="0" max="25" value="0" oninput="updateOverclockFactor(this.value)" class="slider-input-element">
+            </div>
+
+            <div>
+              <div class="tuner-sub-row">
+                <span>COOLING CORES CONSOLE:</span>
+                <span id="cooling-state-lbl" class="text-cyber-green font-bold">ECO COOLING</span>
+              </div>
+              <div class="d-flex gap-8">
+                <button id="cooling-switch-btn" onclick="toggleCoolingState()" class="btn-submit cooling-switch-button-override">
+                  ENGAGE VAPOR BOOST [FAN 100%]
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live Benchmark & Terminal Log Feed -->
+      <div class="bento-card bento-gpu-unit d-flex flex-col">
+        <div class="bento-card-header bento-card-header-gap">
+          <div>
+            <span class="bento-card-title-prefix">Workload Stress Environment</span>
+            <h3 class="bento-card-title">Real-Time Performance Stress</h3>
+          </div>
+          <div class="bento-header-badge active" id="terminal-badge">SYS IDLE</div>
+        </div>
+
+        <!-- Terminal Output Viewer -->
+        <div class="terminal-box-container" id="terminal-live-feed">
+          <div>[ONLINE] System pipeline is healthy. Awaiting execution targets...</div>
+        </div>
+
+        <button onclick="requestPhysicalBenchmark()" id="benchmark-trigger-btn" class="btn-submit benchmark-launch-btn-override">
+          <i data-lucide="zap" class="icon-inline-size"></i>
+          <span>LAUNCH SYSTEM STRESS BENCHMARK</span>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Acquired Component Registries SECTION -->
+    <div class="ledger-header-wrapper-margin">
+      <div class="section-ribbon ledger-header-ribbon">
+        <div>
+          <span class="ribbon-title-prefix text-cyber-purple">DEPLOYED LOGICAL HARDWARE</span>
+          <h2 class="section-ledger-title">Acquired Silicon Component Ledger</h2>
+          <p class="ledger-subtitle-text">Explore active firmware, verify unique logical serial keys, and execute localized diagnostics on items purchased with your pilot balance.</p>
+        </div>
+      </div>
+
+      <div id="acquired-registry-wrapper" class="products-grid">
+        <!-- Deployed dynamically from orders history in user-dashbord.js -->
+      </div>
+    </div>
+
+    <!-- User Orders CRUD Dispatch Center -->
+    <div class="ledger-dispatch-bento-grid">
+      
+      <!-- CREATE: Dispatch New Custom Spec Order Form -->
+      <div class="bento-card bento-card-uplink-full">
+        <div class="bento-card-header bento-card-header-gap">
+          <div>
+            <span class="bento-card-title-prefix text-cyber-purple">CREATE DISPATCH SEGMENT</span>
+            <h3 class="bento-card-title text-base">Custom Silicon Dispatch Form</h3>
+          </div>
+        </div>
+        
+        <p class="dispatch-notes-text">
+          Deploy a custom hardware order onto your pipeline. Deployed virtual silicon will automatically synchronize to your component ledger above.
+        </p>
+
+        <form id="user-create-order-form" onsubmit="event.preventDefault(); handleUserCreateOrder();" class="custom-dispatch-form-override">
+          <div>
+            <label class="form-label dispatch-field-label">Silicon Architecture Contents:</label>
+            <input type="text" id="user-order-contents" class="search-select-element dispatch-text-input-override" placeholder="e.g. Core i9-14900KS Micro-Engine" required>
+          </div>
+
+          <div class="dispatch-2col-grid">
+            <div>
+              <label class="form-label dispatch-field-label">MSRP Toll ($ USD):</label>
+              <input type="number" id="user-order-cost" class="search-select-element dispatch-text-input-override" placeholder="680.00" value="450.00" step="0.01" required>
+            </div>
+            <div>
+              <label class="form-label dispatch-field-label">Pipeline Status:</label>
+              <select id="user-order-status" class="search-select-element dispatch-select-override">
+                <option value="Completed">Acknowledged</option>
+                <option value="Pending">Pending Link</option>
+                <option value="Shipping">Out for Route</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-submit dispatch-submit-btn-override">
+            <i data-lucide="plus-circle" class="icon-inline-size"></i>
+            <span>DISPATCH SILICON DIRECTLY</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- READ, UPDATE, DELETE: Ledgers list -->
+      <div class="history-logs-card inline-card-reset">
+        <div class="logs-card-header history-logs-header-flex">
+          <span class="logs-card-title">
+            <i data-lucide="terminal" class="icon-tech-purple"></i>
+            Active Telemetry Dispatch Ledger & Control Deck
+          </span>
+          <span class="logs-card-version history-logs-card-version-badge">CRUD_SEC_LIVE</span>
+        </div>
+
+        <div class="table-scroller history-table-scroller">
+          <table class="telemetry-table history-telemetry-table">
+            <thead>
+              <tr>
+                <th class="history-table-th-left">Invoice ID</th>
+                <th class="history-table-th-left">Silicon Contents</th>
+                <th class="history-table-th-left">Link Timestamp</th>
+                <th class="history-table-th-left">MSRP Toll</th>
+                <th class="history-table-th-left">Status Verified</th>
+                <th class="history-table-th-right">Protocol Override</th>
+              </tr>
+            </thead>
+            <tbody id="user-order-table">
+              <!-- Loaded dynamically via user-dashbord.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ----- CART DRAWER PANEL ----- -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop" onclick="if(event.target===this) toggleCartDrawer(false)">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <div class="cart-drawer-title">
+          <i data-lucide="shopping-bag" class="icon-cyber-purple icon-size-18"></i>
+          <span>Deployable Queue</span>
+        </div>
+        <button class="cart-close-btn" onclick="toggleCartDrawer(false)">Close [X]</button>
+      </div>
+
+      <div class="cart-items-container" id="cart-items-wrapper">
+        <!-- Injected dynamically via cart.js -->
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal MSRP:</span>
+          <span id="cart-subtotal" class="cart-subtotal-color-override">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Node Operations Tax (8.25%):</span>
+          <span id="cart-tax" class="cart-subtotal-color-override">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Grid Logistics courier:</span>
+          <span id="cart-shipping" class="cart-subtotal-color-override">$0.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>COSMIC TOLL COST:</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        
+        <button onclick="triggerCheckout()" class="btn-checkout">
+          <i data-lucide="check" class="icon-size-14"></i>
+          <span>Deploy Silicon Queue</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ----- FOOTER ----- -->
+  <footer class="global-footer">
+    <p>© 2026 NO_LAG HARDWARE LABORATORIES INC. ALL RIGHTS RESERVED. EXTREME LEVEL WORKSTATION SPECIALISTS.</p>
+  </footer>
+
+  <script type="module" src="/assets/js/script.js"></script>
+  <script type="module" src="/assets/js/cart.js"></script>
+  <!-- Main monitor execution script -->
+  <script type="module" src="/assets/js/user-dashbord.js"></script>
+</body>
+</html>

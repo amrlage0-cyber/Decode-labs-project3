@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Lag — Hardware Queue</title>
+  
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/pages.css">
+  <link rel="stylesheet" href="../assets/css/animation.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
+  
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="shimmer-shun page-enter">
+
+  <!-- Ambient Grid Background -->
+  <div class="ambient-grid"></div>
+
+  <!-- ----- NAVIGATION BAR ----- -->
+  <header class="global-header">
+    <button onclick="goToBrandHome()" class="header-brand">
+      <div class="brand-led"></div>
+      <span class="brand-text">NO_LAG</span>
+    </button>
+    
+    <nav class="global-nav" id="global-nav-bar">
+      <a href="products.html" class="nav-link">Products</a>
+      <a href="user-dashboard.html" class="nav-link">Dashboard</a>
+      <a href="cart.html" class="nav-link active">Cart</a>
+      <a href="blogs.html" class="nav-link">Blogs</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+    
+    <div class="header-actions">
+      <div class="pilot-badge">
+        <span class="pilot-led" id="pilot-role-led"></span>
+        <span>PILOT: <b class="pilot-name" id="pilot-name-display">Guest</b></span>
+      </div>
+
+      <a href="admin.html" id="admin-bypass-btn" class="btn-admin-console hidden-el">
+        <i data-lucide="sliders" class="icon-14"></i>
+        <span>Admin Console</span>
+      </a>
+
+      <a href="user-dashboard.html" class="cart-trigger no-underline" title="Telemetry Base">
+        <i data-lucide="cpu" class="icon-16"></i>
+      </a>
+
+      <button onclick="toggleCartDrawer(true)" class="cart-trigger" title="Shopping Cart">
+        <i data-lucide="shopping-cart" class="icon-16"></i>
+        <span class="cart-badge hidden-el" id="header-cart-count">0</span>
+      </button>
+
+      <button onclick="logoutPilot()" class="btn-logout" title="Terminate Session Link">
+        <i data-lucide="log-out" class="icon-16"></i>
+      </button>
+
+      <button onclick="toggleMobileMenu()" class="menu-mobile-btn">
+        <i data-lucide="menu" class="icon-16"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ----- MAIN CART WORKSPACE ----- -->
+  <main class="container view-section">
+    <div class="section-ribbon">
+      <div>
+        <span class="ribbon-title-prefix">Allocation Queue</span>
+        <h1 class="ribbon-title-main">Silicon Deployment Pipeline</h1>
+        <p class="ribbon-title-desc">
+          Review designated hardware selections prior to initiating central dispatch telemetry. All allocations feature fully-shielded warranties and silicon calibration.
+        </p>
+      </div>
+    </div>
+
+    <!-- Divided Layout -->
+    <div class="cart-viewport-layout">
+      <!-- Left columns: product queues -->
+      <div class="cart-table-card">
+        <div class="cart-table-header">
+          <span>Linked Silicon Architecture System</span>
+          <span>Operations Commands</span>
+        </div>
+        
+        <div class="cart-table-body" id="cart-page-body">
+          <!-- Injected dynamically via cart.js -->
+        </div>
+      </div>
+
+      <!-- Right columns: Invoice pricing specifications panel -->
+      <div class="admin-card h-fit">
+        <div class="admin-card-header">
+          <span class="admin-card-title">
+            <i data-lucide="receipt" class="icon-14 icon-green-color"></i>
+            Allocation Calculations
+          </span>
+        </div>
+
+        <div class="cart-summary border-none p-0">
+          <div class="summary-row">
+            <span>Subtotal MSRP:</span>
+            <span id="cart-page-subtotal" class="text-white font-weight-bold">$0.00</span>
+          </div>
+          <div class="summary-row summary-row-mt-8">
+            <span>Grid Tax (8.25%):</span>
+            <span id="cart-page-tax" class="text-white font-weight-bold">$0.00</span>
+          </div>
+          <div class="summary-row summary-row-mt-8">
+            <span>Dispatch Logistics:</span>
+            <span id="cart-page-shipping" class="text-white font-weight-bold">FREE DISPATCH</span>
+          </div>
+          <div class="summary-row total summary-row-mt-16">
+            <span>FINAL TOLL:</span>
+            <span id="cart-page-total" class="price-msrp-val">$0.00</span>
+          </div>
+
+          <button onclick="triggerCheckout()" class="btn-checkout btn-checkout-page">
+            <i data-lucide="zap" class="icon-14"></i>
+            <span>Confirm Silicon Deployment</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ----- CART DRAWER SUPPORT BACKDROP (Toggled optionally) ----- -->
+  <div class="cart-drawer-backdrop" id="cart-drawer-backdrop" onclick="if(event.target===this) toggleCartDrawer(false)">
+    <div class="cart-drawer">
+      <div class="cart-drawer-header">
+        <div class="cart-drawer-title">
+          <i data-lucide="shopping-bag" class="icon-18 icon-purple-color"></i>
+          <span>Deployable Queue</span>
+        </div>
+        <button class="cart-close-btn" onclick="toggleCartDrawer(false)">Close [X]</button>
+      </div>
+
+      <div class="cart-items-container" id="cart-items-wrapper">
+        <!-- Injected dynamically via cart.js -->
+      </div>
+
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal MSRP:</span>
+          <span id="cart-subtotal" class="text-white">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Node Operations Tax (8.25%):</span>
+          <span id="cart-tax" class="text-white">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Grid Logistics courier:</span>
+          <span id="cart-shipping" class="text-white">$0.00</span>
+        </div>
+        <div class="summary-row total">
+          <span>COSMIC TOLL COST:</span>
+          <span id="cart-total">$0.00</span>
+        </div>
+        
+        <button onclick="triggerCheckout()" class="btn-checkout">
+          <i data-lucide="check" class="icon-14"></i>
+          <span>Deploy Silicon Queue</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ----- CHECKOUT SUCCESS MODAL ----- -->
+  <div id="checkout-success-modal" class="decryption-modal-backdrop hidden-el">
+    <div class="static-success-panel m-auto">
+      <div class="modal-success-icon-container">
+        <i data-lucide="check-circle" class="icon-28 icon-green-color"></i>
+      </div>
+      <h2 class="success-modal-heading2">
+        Silicon Deployed Successfully
+      </h2>
+      <p class="success-modal-desc">
+        Transmission Acknowledged by central logistics node
+      </p>
+
+      <div class="success-modal-receipt-box">
+        <div>Receipt Link: <b id="sc-receipt-id" class="text-cyber-green">ORD-7761</b></div>
+        <div>Toll value: <b id="sc-total-val" class="text-white">$0.00</b></div>
+        <div class="success-modal-receipt-footer">
+          A physical courier carrier will complete logistics shipping allocations under 24 hours. Custom certified core parameters graphs inside package.
+        </div>
+      </div>
+
+      <button onclick="closeCheckoutSuccess()" class="btn-submit btn-height-44">
+        <span>Acknowledge Calibration</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ----- FOOTER ----- -->
+  <footer class="global-footer">
+    <p>© 2026 NO_LAG HARDWARE LABORATORIES INC. ALL RIGHTS RESERVED. EXTREME LEVEL WORKSTATION SPECIALISTS.</p>
+  </footer>
+
+  <script type="module" src="/assets/js/script.js"></script>
+  <script type="module" src="/assets/js/cart.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Lag — Access Gateway</title>
+  
+  <!-- Brutalist Style Sheets -->
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+  <link rel="stylesheet" href="assets/css/animation.css">
+  <link rel="stylesheet" href="assets/css/responsive.css">
+  
+  <!-- Lucide Icons Library -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body class="login-viewport shimmer-shun page-enter">
+
+  <!-- Ambient background grid -->
+  <div class="ambient-grid"></div>
+
+  <div class="login-card-wrapper">
+    <!-- Brand Logo -->
+    <div class="login-brand-logo">
+      <h1><span class="indicator"></span>NO_LAG</h1>
+      <div class="login-subtitle">System Level Access Required</div>
+    </div>
+
+    <!-- Login Authentication Frame -->
+    <div class="auth-panel">
+      <!-- Neon scanner accent pipe -->
+      <div class="auth-stripe"></div>
+
+      <form onsubmit="handlePilotLogin(event)">
+        <!-- Codename Input -->
+        <div class="form-group">
+          <label class="form-label" for="input-username">Pilot Codename</label>
+          <div class="input-container">
+            <span class="input-icon"><i data-lucide="user"></i></span>
+            <input 
+              type="text" 
+              id="input-username" 
+              class="input-field" 
+              placeholder="e.g. YourName" 
+              value="amrlage001" 
+              required
+            >
+          </div>
+          <p class="input-helper">
+            💡 Enter <b>amrlage001</b> to trigger privileged admin console access.
+          </p>
+        </div>
+
+        <!-- Encryption Input -->
+        <div class="form-group">
+          <label class="form-label" for="input-password">Secure Encryption Key</label>
+          <div class="input-container">
+            <span class="input-icon"><i data-lucide="lock"></i></span>
+            <input 
+              type="password" 
+              id="input-password" 
+              class="input-field" 
+              placeholder="••••••••••••" 
+              value="123456" 
+              required
+            >
+          </div>
+        </div>
+
+        <!-- Session Controls Info -->
+        <div class="login-options">
+          <label class="remember-me">
+            <input type="checkbox" checked>
+            <span>Keep Session Engaged</span>
+          </label>
+          <div class="node-status">NODE: ONLINE</div>
+        </div>
+
+        <!-- Submit system bypass -->
+        <button type="submit" class="btn-submit">
+          <span>Access System Core</span>
+          <i data-lucide="chevron-right"></i>
+        </button>
+      </form>
+
+      <!-- Connection Telemetry Footer -->
+      <div class="auth-footer">
+        <div class="auth-footer-link">
+          <span class="pulse-dot"></span>
+          <span>SSL LINK REGISTERED</span>
+        </div>
+        <div class="auth-footer-ping">PING: 8ms TO REGIONAL GRID</div>
+      </div>
+    </div>
+
+    <!-- Guest entries -->
+    <div class="guest-access-panel">
+      <button onclick="guestAccess('blogs')" class="guest-btn">▶ Protocols & Hardware Logs</button>
+      <button onclick="guestAccess('contact')" class="guest-btn guest-btn-right">▶ Contact Uplink Division</button>
+    </div>
+  </div>
+
+  <script type="module" src="/assets/js/script.js"></script>
+</body>
+</html>

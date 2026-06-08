@@ -1,0 +1,91 @@
+/* ==========================================================================
+   NO LAG — ELITE PC HARDWARE HUB
+   RESPONSIVE DESIGN SYSTEM OVERLAYS (responsive.css)
+   ========================================================================== */
+
+/* ----- TABLET BREAKPOINT (768px) ----- */
+@media (max-width: 768px) {
+  body {
+    padding-bottom: 2rem;
+  }
+  
+  header.global-header {
+    padding: 0 1rem;
+  }
+  
+  .brand-text {
+    font-size: 1.25rem;
+  }
+  
+  .pilot-badge {
+    display: none !important; /* Hide badge on mobile menu toolbar default */
+  }
+  
+  .btn-admin-console {
+    font-size: 0.6rem;
+    padding: 4px 8px;
+    height: 34px;
+  }
+  
+  .cart-trigger, .btn-logout {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .ribbon-title-main {
+    font-size: 1.75rem;
+  }
+  
+  .comms-box {
+    padding: 1.25rem;
+  }
+}
+
+/* ----- MOBILE PHONE BREAKPOINT (480px) ----- */
+@media (max-width: 480px) {
+  .section-ribbon {
+    padding-bottom: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .ribbon-title-main {
+    font-size: 1.5rem;
+  }
+  
+  .auth-panel {
+    padding: 1.5rem;
+  }
+  
+  .login-brand-logo h1 {
+    font-size: 2.25rem;
+  }
+  
+  .products-grid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+  
+  .product-img-wrapper {
+    height: 180px;
+  }
+  
+  .cart-page-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .cart-page-item-controls {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  
+  .cart-price-sum {
+    text-align: right;
+  }
+  
+  .matrix-secondary-indicators {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
